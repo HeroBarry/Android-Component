@@ -1,8 +1,9 @@
-# Android Component
+# RecyclerView适配器
 
 #### 介绍
-Android 开发组件
-
+RecyclerView多类型适配器
+ 发布仓库
+https://blog.csdn.net/u012800952/article/details/108630037
 #### 软件架构
 软件架构说明
 

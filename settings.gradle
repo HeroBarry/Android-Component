@@ -1,0 +1,4 @@
+include ':DataMock'
+include ':VogueAdapter'
+include ':app'
+rootProject.name = "Android-Component"
