@@ -3,7 +3,7 @@ package com.vogue.component.adapter;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.vogue.adapter.demo.R;
+import com.vogue.component.R;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;

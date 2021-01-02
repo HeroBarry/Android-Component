@@ -21,13 +21,13 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.vogue.adapter.ViewHolderDelegate;
 import com.vogue.adapter.VogueRecyclerAdapter;
-import com.vogue.adapter.demo.R;
+import com.vogue.component.R;
 import com.vogue.component.adapter.callback.IRecyclerViewItemClickListener;
-import com.vogue.adapter.demo.databinding.FragmentNotificationsBinding;
-import com.vogue.adapter.demo.databinding.NoMoreDataBinding;
-import com.vogue.adapter.demo.databinding.TryCardItemCardBinding;
 import com.vogue.component.adapter.mock.NoMoreData;
 import com.vogue.component.adapter.mock.Video;
+import com.vogue.component.databinding.FragmentNotificationsBinding;
+import com.vogue.component.databinding.NoMoreDataBinding;
+import com.vogue.component.databinding.TryCardItemCardBinding;
 
 import java.util.ArrayList;
 import java.util.List;

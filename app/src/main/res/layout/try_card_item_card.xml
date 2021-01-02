@@ -6,13 +6,13 @@
     <data>
         <variable
             name="overFlowClickListener"
-            type="com.vogue.adapter.demo.callback.IOverflowMenuItemClickListener" />
+            type="com.vogue.component.adapter.callback.IOverflowMenuItemClickListener" />
         <variable
             name="recyclerViewItemClickListener"
-            type="com.vogue.adapter.demo.callback.IRecyclerViewItemClickListener" />
+            type="com.vogue.component.adapter.callback.IRecyclerViewItemClickListener" />
         <variable
             name="data"
-            type="com.vogue.adapter.demo.mock.Video" />
+            type="com.vogue.component.adapter.mock.Video" />
     </data>
 
     <androidx.cardview.widget.CardView

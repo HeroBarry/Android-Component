@@ -21,12 +21,13 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.vogue.adapter.ViewHolderDelegate;
 import com.vogue.adapter.VogueRecyclerAdapter;
-import com.vogue.adapter.demo.R;
+import com.vogue.component.R;
 import com.vogue.component.adapter.callback.IRecyclerViewItemClickListener;
-import com.vogue.adapter.demo.databinding.FragmentHomeBinding;
-import com.vogue.adapter.demo.databinding.NoMoreDataBinding;
 import com.vogue.component.adapter.mock.NoMoreData;
 import com.vogue.component.adapter.mock.Video;
+import com.vogue.component.databinding.FragmentHomeBinding;
+import com.vogue.component.databinding.NoMoreDataBinding;
+import com.vogue.component.databinding.TryCardItemCardBinding;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,9 +56,9 @@ public class HomeFragment extends Fragment implements OnRefreshLoadMoreListener,
 
         adapter=new VogueRecyclerAdapter(new ArrayList());
 
-        adapter.addViewHolder(R.layout.try_card_item_card, new ViewHolderDelegate<Video, com.vogue.adapter.demo.databinding.TryCardItemCardBinding>() {
+        adapter.addViewHolder(R.layout.try_card_item_card, new ViewHolderDelegate<Video, TryCardItemCardBinding>() {
             @Override
-            public void onBindingView(com.vogue.adapter.demo.databinding.TryCardItemCardBinding binding, Video data, int position) {
+            public void onBindingView(TryCardItemCardBinding binding, Video data, int position) {
                 binding.setData(data);
 
                 binding.setRecyclerViewItemClickListener(HomeFragment.this);
