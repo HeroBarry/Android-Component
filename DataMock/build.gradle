@@ -1,6 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
-group='com.vogue.mock'
+group='com.gitee.georgeme'
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
