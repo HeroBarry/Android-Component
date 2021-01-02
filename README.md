@@ -4,6 +4,8 @@
 RecyclerView多类型适配器
  发布仓库
 https://blog.csdn.net/u012800952/article/details/108630037
+
+e7ae7741b4b383cb5759c81de0ef9c0e
 #### 软件架构
 软件架构说明
 
