@@ -13,6 +13,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.luck.picture.lib.PictureSelector;
+import com.luck.picture.lib.config.PictureMimeType;
+import com.luck.picture.lib.entity.LocalMedia;
+import com.luck.picture.lib.listener.OnResultCallbackListener;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.tbruyelle.rxpermissions2.RxPermissions;
@@ -54,7 +58,22 @@ public class EasySwipeMenuActivity extends AppCompatActivity  implements OnRefre
                 binding.rightMenu2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(EasySwipeMenuActivity.this,""+data.getTitle(),Toast.LENGTH_LONG).show();
+
+                        PictureSelector.create(EasySwipeMenuActivity.this)
+                                .openGallery(PictureMimeType.ofAll())
+                                .loadImageEngine(GlideEngine.createGlideEngine())
+                                .forResult(new OnResultCallbackListener<LocalMedia>() {
+                                    @Override
+                                    public void onResult(List<LocalMedia> result) {
+                                        // onResult Callback
+                                        Toast.makeText(EasySwipeMenuActivity.this,"----"+result.size(), Toast.LENGTH_LONG).show();
+                                    }
+
+                                    @Override
+                                    public void onCancel() {
+                                        // onCancel Callback
+                                    }
+                                });
                     }
                 });
             }
@@ -78,6 +97,7 @@ public class EasySwipeMenuActivity extends AppCompatActivity  implements OnRefre
             @Override
             public void onChanged(String s) {
                 Toast.makeText(EasySwipeMenuActivity.this,""+s, Toast.LENGTH_LONG).show();
+
             }
         });
 

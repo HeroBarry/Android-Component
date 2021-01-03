@@ -53,9 +53,9 @@ dependencies {
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.1'
 
     //图片加载
-    implementation 'com.github.bumptech.glide:glide:4.6.1'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.6.1'
-    implementation 'com.github.bumptech.glide:okhttp3-integration:4.6.1'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    implementation 'com.github.bumptech.glide:okhttp3-integration:4.11.0'
 
     //数据模拟
     implementation 'com.github.HeroBarry:data-mock:1.0.5'
@@ -64,6 +64,8 @@ dependencies {
     implementation 'com.github.tbruyelle:rxpermissions:2.x.v0.9.3'
 
     implementation "com.pnikosis:materialish-progress:1.7"
+
+    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.6.0'
 
     implementation project(":VogueAdapter")
     implementation project(":EasySwipeMenuLayout")

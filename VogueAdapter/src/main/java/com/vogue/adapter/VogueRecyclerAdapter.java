@@ -13,9 +13,9 @@ import java.util.List;
  *  Recycler基础适配器
  *  时间：2020年10月16日06:07:06
  */
-public  class VogueRecyclerAdapter<T> extends RecyclerView.Adapter<VogueViewHolder> {
+public class VogueRecyclerAdapter<T> extends RecyclerView.Adapter<VogueViewHolder> {
 
-    private List<T> list;
+    protected List<T> list;
 
     private SparseArrayCompat<ViewHolderDelegate> delegates = new SparseArrayCompat();
 
