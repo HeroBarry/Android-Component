@@ -1,20 +1,17 @@
-package com.vogue.component.adapter.ui.home;
-
-import android.Manifest;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
+package com.vogue.component.swipemenu;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.SimpleItemAnimator;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+
+import android.Manifest;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
@@ -22,45 +19,44 @@ import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.vogue.adapter.ViewHolderDelegate;
 import com.vogue.adapter.VogueRecyclerAdapter;
 import com.vogue.component.R;
-import com.vogue.component.adapter.callback.IRecyclerViewItemClickListener;
 import com.vogue.component.adapter.mock.NoMoreData;
 import com.vogue.component.adapter.mock.Video;
-import com.vogue.component.databinding.FragmentHomeBinding;
+import com.vogue.component.databinding.ActivityEasySwipeMenuBinding;
+import com.vogue.component.databinding.ItemSwipemenuBinding;
 import com.vogue.component.databinding.NoMoreDataBinding;
 import com.vogue.component.databinding.TryCardItemCardBinding;
 
 import java.util.ArrayList;
 import java.util.List;
 
+public class EasySwipeMenuActivity extends AppCompatActivity  implements OnRefreshLoadMoreListener {
 
-public class HomeFragment extends Fragment implements OnRefreshLoadMoreListener, IRecyclerViewItemClickListener {
+    private EasySwipeMenuModel viewModel;
+    private ActivityEasySwipeMenuBinding binding;
 
-    private HomeViewModel viewModel;
-    private FragmentHomeBinding binding;
     protected boolean refresh=true;
     private VogueRecyclerAdapter adapter;
 
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        viewModel =new ViewModelProvider(this).get(HomeViewModel.class);
-
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_home, container, false);
-        return binding.getRoot();
-    }
-
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        viewModel =new ViewModelProvider(this).get(EasySwipeMenuModel.class);
+        binding= DataBindingUtil.setContentView(this,R.layout.activity_easy_swipe_menu);
         StaggeredGridLayoutManager layoutManager=new StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.VERTICAL);
         binding.rvList.setLayoutManager(layoutManager);
 
         adapter=new VogueRecyclerAdapter(new ArrayList());
 
-        adapter.addViewHolder(R.layout.try_card_item_card, new ViewHolderDelegate<Video, TryCardItemCardBinding>() {
+        adapter.addViewHolder(R.layout.item_swipemenu, new ViewHolderDelegate<Video, ItemSwipemenuBinding>() {
             @Override
-            public void onBindingView(TryCardItemCardBinding binding, Video data, int position) {
+            public void onBindingView(ItemSwipemenuBinding binding, Video data, int position) {
                 binding.setData(data);
-
-                binding.setRecyclerViewItemClickListener(HomeFragment.this);
+                binding.rightMenu2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(EasySwipeMenuActivity.this,""+data.getTitle(),Toast.LENGTH_LONG).show();
+                    }
+                });
             }
         });
         adapter.addViewHolder(R.layout.no_more_data, new ViewHolderDelegate<NoMoreData, NoMoreDataBinding>() {
@@ -78,18 +74,18 @@ public class HomeFragment extends Fragment implements OnRefreshLoadMoreListener,
         binding.srlList.setOnRefreshListener(this);
         binding.srlList.setOnLoadMoreListener(this);
 
-        viewModel.getErrorMsg().observe(getViewLifecycleOwner(), new Observer<String>() {
+        viewModel.getErrorMsg().observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                Toast.makeText(getActivity(),""+s, Toast.LENGTH_LONG).show();
+                Toast.makeText(EasySwipeMenuActivity.this,""+s, Toast.LENGTH_LONG).show();
             }
         });
 
-        viewModel.getList().observe(getViewLifecycleOwner(), new Observer<List<Object>>() {
+        viewModel.getList().observe(this, new Observer<List<Object>>() {
             @Override
             public void onChanged(List<Object> list) {
                 if (list.isEmpty()) {
-                    Toast.makeText(getActivity(), "没有获取到数据", Toast.LENGTH_LONG).show();
+                    Toast.makeText(EasySwipeMenuActivity.this, "没有获取到数据", Toast.LENGTH_LONG).show();
                     binding.srlList.finishRefresh();
                     binding.srlList.finishLoadMore();
                 } else {
@@ -122,17 +118,13 @@ public class HomeFragment extends Fragment implements OnRefreshLoadMoreListener,
         loadData(refresh=true);
     }
 
-    @Override
-    public void onRecyclerViewItemClick(String url, String title) {
-        Toast.makeText(requireContext(),title,Toast.LENGTH_SHORT).show();
-    }
     private void loadData(boolean refresh){
-        RxPermissions rxPermissions=new RxPermissions(requireActivity());
+        RxPermissions rxPermissions=new RxPermissions(this);
         rxPermissions.request(Manifest.permission.INTERNET).subscribe(havePermission-> {
             if (havePermission){
                 viewModel.loadData(refresh);
             }else {
-                Toast.makeText(requireContext(),"权限不足，请检查权限",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"权限不足，请检查权限",Toast.LENGTH_SHORT).show();
             }
         });
     }
