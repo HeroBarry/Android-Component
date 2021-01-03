@@ -4,6 +4,7 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
 /**
+ *  获取接口上的泛型T
  *  时间：2020年10月16日06:07:06
  */
 public class GenericUtil {
