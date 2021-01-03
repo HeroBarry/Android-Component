@@ -34,7 +34,7 @@ public abstract class VogueListFragment<T,V extends VogueListViewModel> extends 
     protected List<T> list;
     protected VogueRecyclerAdapter adapter;
     protected FragmentListBinding binding;
-    private V viewModel;
+    protected V viewModel;
 
     protected boolean refresh=true;
 

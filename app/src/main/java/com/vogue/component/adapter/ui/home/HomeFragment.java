@@ -63,6 +63,7 @@ public class HomeFragment extends Fragment implements OnRefreshLoadMoreListener,
                 binding.setRecyclerViewItemClickListener(HomeFragment.this);
             }
         });
+
         adapter.addViewHolder(R.layout.no_more_data, new ViewHolderDelegate<NoMoreData, NoMoreDataBinding>() {
             @Override
             public void onBindingView(NoMoreDataBinding binding, NoMoreData data, int position) {
