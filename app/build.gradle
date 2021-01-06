@@ -66,8 +66,10 @@ dependencies {
     implementation "com.pnikosis:materialish-progress:1.7"
 
     implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.6.0'
-
+    implementation 'com.gitee.georgeme:EasySwipeMenuLayout:v1.0.9'
+    implementation 'com.gitee.georgeme:PhotoSelector:v1.0.9'
     implementation project(":VogueAdapter")
     implementation project(":EasySwipeMenuLayout")
+    //implementation project(path: ':PhotoSelector')
 
 }

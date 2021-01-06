@@ -1,5 +1,10 @@
 package com.vogue.component.swipemenu;
 
+import android.Manifest;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -7,11 +12,6 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.SimpleItemAnimator;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
-
-import android.Manifest;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
 
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureMimeType;
@@ -28,7 +28,6 @@ import com.vogue.component.adapter.mock.Video;
 import com.vogue.component.databinding.ActivityEasySwipeMenuBinding;
 import com.vogue.component.databinding.ItemSwipemenuBinding;
 import com.vogue.component.databinding.NoMoreDataBinding;
-import com.vogue.component.databinding.TryCardItemCardBinding;
 
 import java.util.ArrayList;
 import java.util.List;
