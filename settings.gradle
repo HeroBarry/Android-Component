@@ -1,3 +1,4 @@
+include ':PhotoSelector'
 include ':EasySwipeMenuLayout'
 include ':DataMock'
 include ':VogueAdapter'
